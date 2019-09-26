@@ -15,7 +15,7 @@ namespace SydvestBo_Opgave
 
         static void Main(string[] args)
         {
-
+            
             Console.WindowHeight = 25;
             Console.WindowWidth = 95;
             Console.CursorVisible = false;
