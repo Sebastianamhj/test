@@ -15,7 +15,6 @@ namespace SydvestBo_Opgave
 
         static void Main(string[] args)
         {
-
             Console.WindowHeight = 25;
             Console.WindowWidth = 95;
             Console.CursorVisible = false;
@@ -341,6 +340,23 @@ namespace SydvestBo_Opgave
 
 
                 } while (!titleMenuBool);
+            }
+        }
+        //er denne dato reserveret, samt sommerhus
+
+        public static string ugeNumre(DateTime dato,int ugeantal)
+        {
+            int uge = (dato.DayOfYear / 7) + 1;
+            if (dato.DayOfWeek == DayOfWeek.Saturday || dato.DayOfWeek == DayOfWeek.Sunday)
+            {
+                uge++;
+            }
+            if (!(ugeantal > 1)){
+                return uge.ToString();
+            }
+            else
+            {
+                return $"{uge}-{uge + (ugeantal - 1)}";
             }
         }
     }
