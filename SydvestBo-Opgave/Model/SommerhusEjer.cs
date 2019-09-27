@@ -13,6 +13,7 @@ namespace SydvestBo_Opgave.Model
     public string Fornavn { get; set; }
     public string Efternavn { get; set; }
     public string Adresse { get; set; }
+    
 
 
     private int eID;
@@ -67,11 +68,29 @@ namespace SydvestBo_Opgave.Model
             PostNr = postnr;
             Telefon = telefon;
 	}
+        
+        public void InsertDB()
+            {
+            string sql = "INSERT INTO Ejer VALUES ('" + Fornavn + "','" + Efternavn + "','" + Adresse + "','" + PostNr + "','" + Telefon + ")"; 
+
+            try 
+	        {	        
+		    SQL.insert(sql);
+            
+
+	        }
+        	catch (Exception)
+	        {
+               Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + Exception);
+
+            }
+            }
+                    
+    
 
      public static List<SommerhusEjer> LavEjerListe()
         {
-         string sql = "SELECT * FROM Ejer";
-
+         string sql = "SELECT * FROM EJER";
             
             DataTable EjerDataTable = SQL.ReadTable(sql);
 
@@ -86,7 +105,8 @@ namespace SydvestBo_Opgave.Model
             Efternavn = EjerData["Efternavn"].ToString(),
             Adresse = EjerData["Adresse"].ToString(),
             PostNr = Convert.ToInt32(EjerData["PostNr"]),
-            Telefon = Convert.ToInt32(EjerData["Telefon"])
+            Telefon = Convert.ToInt32(EjerData["Telefon"]),
+
             
                 });
             }
