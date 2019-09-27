@@ -24,7 +24,6 @@ namespace SydvestBo_Opgave
             int menuCounter = 1;
             string currentMenu = "Main";
 
-
             Typeclass Writer = new Typeclass();
             Console.SetCursorPosition(Console.WindowWidth / 2 - 10, 1);
             Writer.TypeWriter("Sydvest-Bo Sommerhuse");
@@ -354,8 +353,26 @@ namespace SydvestBo_Opgave
                 } while (!titleMenuBool);
             }
         }
-        //er denne dato reserveret, samt sommerhus
+        //Tester om dato og ugeforløb overlapper med en eksisterende reservation
+        //returnere true, hvis de overlapper
+        public static bool ugeReserveret(DateTime date, int uger)
+        {
+            //Test data, der burde blive hentet fra databasen
+            DateTime dBDate = new DateTime(2019, 5, 1);
+            int dBUger = 1;
 
+            DateTime dBDateEnd = dBDate.AddDays(7 * dBUger);
+            DateTime dateEnd = date.AddDays(7 * uger);
+
+            if (date < dBDateEnd && dBDate < dateEnd)
+            {
+                return true;
+            }
+            else return false;
+
+        }
+
+        //returner uge til uge streng eks: 29-31
         public static string ugeNumre(DateTime dato,int ugeantal)
         {
             int uge = (dato.DayOfYear / 7) + 1;
@@ -363,7 +380,7 @@ namespace SydvestBo_Opgave
             {
                 uge++;
             }
-            if (!(ugeantal > 1)){
+            if (ugeantal < 1){
                 return uge.ToString();
             }
             else
