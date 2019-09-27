@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
+using SydvestBo_Opgave.Database;
 
 namespace SydvestBo_Opgave.Model
 {
@@ -50,6 +52,50 @@ namespace SydvestBo_Opgave.Model
                 }
             }
     }
+
+        public SommerhusEjer ()
+	{
+
+	}
+
+        public SommerhusEjer (int ejerid, string fornavn, string efternavn, string adresse, int postnr, int telefon)
+	{
+            EjerID = ejerid;
+            Fornavn = fornavn;
+            Efternavn = efternavn;
+            Adresse = adresse;
+            PostNr = postnr;
+            Telefon = telefon;
+	}
+
+     public static List<SommerhusEjer> LavEjerListe()
+        {
+         string sql = "SELECT * FROM Ejer";
+
+            
+            DataTable EjerDataTable = SQL.ReadTable(sql);
+
+            List<SommerhusEjer> EjerList = new List<SommerhusEjer>();
+            foreach (DataRow EjerData in EjerDataTable.Rows)
+            {
+                EjerList.Add(new SommerhusEjer()
+                {
+
+            EjerID = Convert.ToInt32(EjerData["EjerID"]),
+            Fornavn = EjerData["Fornavn"].ToString(),
+            Efternavn = EjerData["Efternavn"].ToString(),
+            Adresse = EjerData["Adresse"].ToString(),
+            PostNr = Convert.ToInt32(EjerData["PostNr"]),
+            Telefon = Convert.ToInt32(EjerData["Telefon"])
+            
+                });
+            }
+            
+            return EjerList;    
+
+         }
+
+	
 
 
   }

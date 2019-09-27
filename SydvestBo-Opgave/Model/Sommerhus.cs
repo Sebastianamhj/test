@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
+using SydvestBo_Opgave.Database;
 
 namespace SydvestBo_Opgave.Model
 {
    class SommerhusClass
 {
-    public int Klassificering { get; set; }
+    public string Klassificering { get; set; }
     public string Adresse { get; set; }
     public string Opsynsmand { get; set; }
     public string Godkendt { get; set; }
 
-
+    
     private int AntalSenge;
     private int husid;
     private int postnummer;
@@ -22,11 +24,11 @@ namespace SydvestBo_Opgave.Model
 
         public int StandardUgePris
         {
-            get { return myVar; }
+            get { return Ugepris; }
             set {
                 if (value > 1000)
                 {
-                    myVar = value;
+                    Ugepris = value;
                 }
                 }
         }
@@ -79,5 +81,58 @@ namespace SydvestBo_Opgave.Model
                 }
                 }
         }
+
+        public SommerhusClass ()
+	    {
+
+    	}
+
+        public SommerhusClass (int sommerhusid, int postnr, string adresse, int senge, int stoerrelse, string klassificering, int standardugepris, string opsynsmand, string godkendt, int ejerid)
+	    {
+            SommerHusID = sommerhusid;
+            PostNr = postnr;
+            Adresse = adresse;
+            Senge = senge;
+            Stoerrelse = stoerrelse;
+            Klassificering = klassificering;
+            StandardUgePris = standardugepris;
+            Opsynsmand = opsynsmand;
+            Godkendt = godkendt;
+            EjerID = ejerid;
+    	}
+
+        public static List<SommerhusClass> LavSommerListe()
+        {
+         string sql = "SELECT SommerHuse.SommerHusID, SommerHuse.PostNr, SommerHuse.Adresse, SommerHuse.Senge, SommerHuse.Stoerrelse, SommerHuse.Klassificering, SommerHuse.StandardUgePris, SommerHuse.Opsynsmand, SommerHuse.Godkendt, Ejer.Fornavn, Ejer.Efternavn, PostNrby.ByNavn FROM SommerHuse INNER JOIN PostNrby ON SommerHuse.PostNr = PostNrby.postNr INNER JOIN Ejer ON SommerHuse.EjerID = Ejer.EjerID";
+
+            
+            DataTable SommerDataTable = SQL.ReadTable(sql);
+
+            List<SommerhusClass> listSommer = new List<SommerhusClass>();
+            foreach (DataRow SommerData in SommerDataTable.Rows)
+            {
+                listSommer.Add(new SommerhusClass()
+                {
+
+                SommerHusID = Convert.ToInt32(SommerData["SommerHusID"]),
+                PostNr = Convert.ToInt32(SommerData["PostNr"]),
+                Adresse = SommerData["Adresse"].ToString(),
+                Senge = Convert.ToInt32(SommerData["Senge"]),
+                Stoerrelse = Convert.ToInt32(SommerData["Stoerrelse"]),
+                Klassificering = SommerData["Klassificering"].ToString(),
+                StandardUgePris = Convert.ToInt32(SommerData["StandardUgePris"]),
+                Opsynsmand = SommerData["Opsynsmand"].ToString(),
+                Godkendt = SommerData["Godkendt"].ToString(),
+                EjerID = Convert.ToInt32(SommerData["EjerID"])
+
+                });
+            }
+            
+            return listSommer;    
+
+        }
+
+
+	}
 }
-}
+
