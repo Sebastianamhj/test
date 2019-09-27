@@ -11,6 +11,9 @@ namespace SydvestBo_Opgave.Database
 {
     static class SQL
     {
+        // Jacks Connection string:
+        // private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=SKAB1-PC-09\H1SOMMER";
+
         // Lauges Connection string:
         // private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=localhost";
         // private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=DESKTOP-TASIIAJ\H1SUMMER";

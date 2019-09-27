@@ -15,7 +15,7 @@ namespace SydvestBo_Opgave
         
         static void Main(string[] args)
         {
-            
+
             Console.WindowHeight = 25;
             Console.WindowWidth = 95;
             Console.CursorVisible = false;
@@ -60,34 +60,6 @@ namespace SydvestBo_Opgave
 
             Console.ReadLine();
         }
-        /*
-        public static void CreateSommerhusobjects()
-        {
-            DataTable currentTable = SQL.ReadTable("SELECT * FROM SommerHuse");
-
-            List<SommerhusClass> sommerlist = new List<SommerhusClass>();
-            sommerlist.Clear; 
-
-            int a = 0;
-            foreach (var Index in currentTable.Rows)
-	{
-                a++;
-                string a ="S" + a.ToString();
-                SommerhusClass b = new SommerhusClass(currentTable[0],currentTable[1],currentTable[2],currentTable[3],currentTable[4],currentTable[5],currentTable[6],currentTable[7],currentTable[8],currentTable[9]);
-                sommerlist.Add();
-
-	}
-          
-            foreach (var item in sommerlist)
-	{
-                Console.WriteLine(item.ToString());
-	}
-        
-
-
-        }
-
-    */
 
         public static void ClearCurrentConsoleLine(List<string> menu)
         {
@@ -163,8 +135,6 @@ namespace SydvestBo_Opgave
             }
 
         }
-
-
 
         public static void SommerhusEjere(string currentMenu)
         {
@@ -382,6 +352,23 @@ namespace SydvestBo_Opgave
 
 
                 } while (!titleMenuBool);
+            }
+        }
+        //er denne dato reserveret, samt sommerhus
+
+        public static string ugeNumre(DateTime dato,int ugeantal)
+        {
+            int uge = (dato.DayOfYear / 7) + 1;
+            if (dato.DayOfWeek == DayOfWeek.Saturday || dato.DayOfWeek == DayOfWeek.Sunday)
+            {
+                uge++;
+            }
+            if (!(ugeantal > 1)){
+                return uge.ToString();
+            }
+            else
+            {
+                return $"{uge}-{uge + (ugeantal - 1)}";
             }
         }
     }
