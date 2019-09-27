@@ -14,7 +14,9 @@ namespace SydvestBo_Opgave.Model
     public string Adresse { get; set; }
     public string Opsynsmand { get; set; }
     public string Godkendt { get; set; }
-
+    public string FornavnEjer { get; set; }
+    public string EfternavnEjer { get; set; }
+    public string Bynavn { get; }
     
     private int AntalSenge;
     private int husid;
@@ -87,7 +89,7 @@ namespace SydvestBo_Opgave.Model
 
     	}
 
-        public SommerhusClass (int sommerhusid, int postnr, string adresse, int senge, int stoerrelse, string klassificering, int standardugepris, string opsynsmand, string godkendt, int ejerid)
+        public SommerhusClass (int sommerhusid, int postnr, string adresse, int senge, int stoerrelse, string klassificering, int standardugepris, string opsynsmand, string godkendt, int ejerid, string fornavnejer, string efternavnejer, string bynavn)
 	    {
             SommerHusID = sommerhusid;
             PostNr = postnr;
@@ -99,13 +101,34 @@ namespace SydvestBo_Opgave.Model
             Opsynsmand = opsynsmand;
             Godkendt = godkendt;
             EjerID = ejerid;
+            FornavnEjer = fornavnejer;
+            EfternavnEjer = efternavnejer;
+            Bynavn = Bynavn;
+            
     	}
+
+          public void InsertDB()
+            {
+            string sql = "INSERT INTO Ejer VALUES ('" + PostNr + "','" + Adresse + "','" + Senge + "','" + Stoerrelse + "','" + Klassificering + StandardUgePris + "','" + Opsynsmand + "','" + Godkendt + EjerID")"; 
+
+            try 
+	        {	        
+		    SQL.insert(sql);
+            
+
+	        }
+        	catch (Exception)
+	        {
+               Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + Exception);
+
+            }
+            }
 
         public static List<SommerhusClass> LavSommerListe()
         {
-         string sql = "SELECT SommerHuse.SommerHusID, SommerHuse.PostNr, SommerHuse.Adresse, SommerHuse.Senge, SommerHuse.Stoerrelse, SommerHuse.Klassificering, SommerHuse.StandardUgePris, SommerHuse.Opsynsmand, SommerHuse.Godkendt, Ejer.Fornavn, Ejer.Efternavn, PostNrby.ByNavn FROM SommerHuse INNER JOIN PostNrby ON SommerHuse.PostNr = PostNrby.postNr INNER JOIN Ejer ON SommerHuse.EjerID = Ejer.EjerID";
-
+         string sql = "SELECT SommerHuse.*,Ejer.EjerID, Ejer.Fornavn, Ejer.Efternavn, PostNrby.ByNavn FROM SommerHuse INNER JOIN PostNrby ON SommerHuse.PostNr = PostNrby.postNr INNER JOIN Ejer ON SommerHuse.EjerID = Ejer.EjerID";
             
+
             DataTable SommerDataTable = SQL.ReadTable(sql);
 
             List<SommerhusClass> listSommer = new List<SommerhusClass>();
@@ -123,7 +146,11 @@ namespace SydvestBo_Opgave.Model
                 StandardUgePris = Convert.ToInt32(SommerData["StandardUgePris"]),
                 Opsynsmand = SommerData["Opsynsmand"].ToString(),
                 Godkendt = SommerData["Godkendt"].ToString(),
-                EjerID = Convert.ToInt32(SommerData["EjerID"])
+                EjerID = Convert.ToInt32(SommerData["EjerID"]),
+                FornavnEjer = SommerData["Fornavn"].ToString(),
+                EfternavnEjer = SommerData["Efternavn"].ToString(),
+                Bynavn = SommerData["ByNavn"].ToString()
+                
 
                 });
             }

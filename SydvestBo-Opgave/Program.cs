@@ -19,6 +19,9 @@ namespace SydvestBo_Opgave
             Console.WindowHeight = 25;
             Console.WindowWidth = 95;
             Console.CursorVisible = false;
+
+            Loading.loading();
+
             //bool titleMenuBool = false;
             bool firstWrite = true;
             int menuCounter = 1;
@@ -55,6 +58,7 @@ namespace SydvestBo_Opgave
                 "Sæson kategori og priser:"
             };
 
+            Loading.loading();
             DynamicChoosing(firstWrite, mainScreen, menuCounter);
             firstWrite = false;
             MenuOptions(mainScreen, currentMenu);
@@ -79,6 +83,8 @@ namespace SydvestBo_Opgave
 
         public static void DynamicChoosing<T>(bool firstwrite, List<T> menu, int menuCounter)
         {
+            
+
             Typeclass Writer = new Typeclass();
             int lineCounter = 6;
             int stringCounter = menu.Count;
@@ -293,9 +299,9 @@ namespace SydvestBo_Opgave
                         case ConsoleKey.Enter:
                             if (menuCounter == 1)
                             {
+                            SommerhusEjere(currentMenu);
 
                                 currentMenu = "SommerhusEjer";
-                                SommerhusEjere(currentMenu);
 
                             }
                             else if (menuCounter == 2)
