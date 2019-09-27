@@ -51,8 +51,8 @@ namespace SydvestBo_Opgave
                 "Sommerhuse:",
                 "Reservationer:",
                 "Udlejningskonsulenter:",
-                "Områder",
-                "Sæson kategori og priser"
+                "Områder:",
+                "Sæson kategori og priser:"
             };
 
             DynamicChoosing(firstWrite, mainScreen, menuCounter);
@@ -212,7 +212,27 @@ namespace SydvestBo_Opgave
             DynamicChoosing(firstWrite, ReservationList, 1);
             MenuOptions(ReservationList, currentMenu);
 
+        }
 
+        public static void CreateKonsulentScreen(string currentMenu)
+        {
+            Console.Clear();
+            bool firstWrite = false;
+
+            Console.SetCursorPosition(1, 1);
+            Console.WriteLine("Udlejningskonsulenter:");
+            Console.SetCursorPosition(1, 2);
+            Console.WriteLine("Brug piletasterne, og Enter, for at vælge.");
+            Console.SetCursorPosition(1, 3);
+            Console.WriteLine("Vælg en Konsulent, for at administrerer eller få flere oplysninger.");
+
+            List<Konsulent> KonsulentList = new List<Konsulent>();
+            KonsulentList = Konsulent.CreateKonsulentList();
+
+            int listCounter = KonsulentList.Count();
+
+            DynamicChoosing(firstWrite, KonsulentList, 1);
+            MenuOptions(KonsulentList, currentMenu);
         }
 
         public static void MenuOptions<T>(List<T> menu, string currentMenu)
@@ -296,8 +316,8 @@ namespace SydvestBo_Opgave
                             {
                                 //Udlejningskonsulent();
                                 //currentMenu = "Udlejningskonsulent";
-                                currentMenu = "Sommerhus";
-                                Sommerhuse(currentMenu);
+                                currentMenu = "Konsulent";
+                                CreateKonsulentScreen(currentMenu);
                             }
                             titleMenuBool = true;
                             break;
@@ -380,9 +400,16 @@ namespace SydvestBo_Opgave
                                     Console.WriteLine(item.MySommerhusID);
 	                            }
 
-                            }else if (currentMenu.Equals("Udlejningskonsulent"))
+                            }else if (currentMenu.Equals("Konsulent"))
                             {
+                                Console.Clear();
+                                List<Konsulent> KonsulentList = new List<Konsulent>();
+                                KonsulentList = Konsulent.CreateKonsulentList();
 
+                                foreach (var item in KonsulentList)
+	                            {
+                                    Console.WriteLine(item.Fornavn + " " + item.Efternavn);
+	                            }
                             }
                             
                             break;

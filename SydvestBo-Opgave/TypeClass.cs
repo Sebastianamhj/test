@@ -14,7 +14,7 @@ namespace SydvestBo_Opgave
             for (int i = 0; i < s.Length; i++)
             {
                 Console.Write(s[i]);
-                Thread.Sleep(20);
+                Thread.Sleep(10);
             }
         }
     }

@@ -63,7 +63,7 @@ namespace SydvestBo_Opgave.Model
         public static List<Reservation> CreateReservationList()
         {
             
-            DataTable ReservationTable = SQL.ReadTable("SELECT * FROM Reservationer");
+            DataTable ReservationTable = SQL.ReadTable("SELECT Reservationer.*, SommerHuse.* FROM Reservationer INNER JOIN SommerHuse ON SommerHuse.SommerHusID = Reservationer.SommerHusID");
 
             List<Reservation> ReservationList = new List<Reservation>();
             foreach (DataRow row in ReservationTable.Rows)
