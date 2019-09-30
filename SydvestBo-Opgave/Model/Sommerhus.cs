@@ -16,7 +16,7 @@ namespace SydvestBo_Opgave.Model
     public string Godkendt { get; set; }
     public string FornavnEjer { get; set; }
     public string EfternavnEjer { get; set; }
-    public string Bynavn { get; }
+    public string Bynavn { get; set; }
     
     private int AntalSenge;
     private int husid;
@@ -91,7 +91,6 @@ namespace SydvestBo_Opgave.Model
 
         public SommerhusClass (int sommerhusid, int postnr, string adresse, int senge, int stoerrelse, string klassificering, int standardugepris, string opsynsmand, string godkendt, int ejerid, string fornavnejer, string efternavnejer, string bynavn)
 	    {
-            SommerHusID = sommerhusid;
             PostNr = postnr;
             Adresse = adresse;
             Senge = senge;
@@ -109,7 +108,7 @@ namespace SydvestBo_Opgave.Model
 
           public void InsertDB()
             {
-            string sql = "INSERT INTO Ejer VALUES ('" + PostNr + "','" + Adresse + "','" + Senge + "','" + Stoerrelse + "','" + Klassificering + StandardUgePris + "','" + Opsynsmand + "','" + Godkendt + EjerID")"; 
+            string sql = "INSERT INTO Ejer VALUES ('" + PostNr + "','" + Adresse + "','" + Senge + "','" + Stoerrelse + "','" + Klassificering + StandardUgePris + "','" + Opsynsmand + "','" + Godkendt + EjerID + "')"; 
 
             try 
 	        {	        
@@ -117,9 +116,9 @@ namespace SydvestBo_Opgave.Model
             
 
 	        }
-        	catch (Exception)
+        	catch (Exception e)
 	        {
-               Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + Exception);
+               Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + e);
 
             }
             }

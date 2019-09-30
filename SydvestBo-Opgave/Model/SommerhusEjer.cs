@@ -79,9 +79,9 @@ namespace SydvestBo_Opgave.Model
             
 
 	        }
-        	catch (Exception)
+        	catch (Exception e)
 	        {
-               Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + Exception);
+               Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + e);
 
             }
             }
