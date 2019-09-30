@@ -100,12 +100,12 @@ namespace SydvestBo_Opgave.Model
                 EjerList.Add(new SommerhusEjer()
                 {
 
-            EjerID = Convert.ToInt32(EjerData["EjerID"]),
-            Fornavn = EjerData["Fornavn"].ToString(),
-            Efternavn = EjerData["Efternavn"].ToString(),
-            Adresse = EjerData["Adresse"].ToString(),
-            PostNr = Convert.ToInt32(EjerData["PostNr"]),
-            Telefon = Convert.ToInt32(EjerData["Telefon"]),
+                    EjerID = Convert.ToInt32(EjerData["EjerID"]),
+                    Fornavn = EjerData["Fornavn"].ToString(),
+                    Efternavn = EjerData["Efternavn"].ToString(),
+                    Adresse = EjerData["Adresse"].ToString(),
+                    PostNr = Convert.ToInt32(EjerData["PostNr"]),
+                    Telefon = Convert.ToInt32(EjerData["Telefon"]),
 
             
                 });

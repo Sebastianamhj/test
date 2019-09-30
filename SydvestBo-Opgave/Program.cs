@@ -58,7 +58,6 @@ namespace SydvestBo_Opgave
                 "Sæson kategori og priser:"
             };
 
-            Loading.loading();
             DynamicChoosing(firstWrite, mainScreen, menuCounter);
             firstWrite = false;
             MenuOptions(mainScreen, currentMenu);

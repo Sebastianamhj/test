@@ -40,13 +40,6 @@ namespace SydvestBo_Opgave
                     cursorYOffset++;
 
                 }
-
-                do {
-                    while (!Console.KeyAvailable)
-                    {
-                        Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    }
-                } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
             }
             Console.ResetColor();
         }
