@@ -550,10 +550,9 @@ namespace SydvestBo_Opgave
                                 List<SommerhusEjer> EjerList = new List<SommerhusEjer>();
                                 EjerList = SommerhusEjer.LavEjerListe();
 
-                                foreach (var item in EjerList)
-	{
-                                    Console.WriteLine(item.Fornavn + " " + item.Efternavn);
-                             }
+                                //Create SommerHusEjer
+                                SommerhusEjer Ejer1 = new SommerhusEjer("Gunner","Hansen","Vestergårdsvej 28", 5000, 40544051);
+                                Ejer1.InsertDB();
 
                             }else if (currentMenu.Equals("Sommerhus"))
                             {
@@ -566,6 +565,12 @@ namespace SydvestBo_Opgave
                                     Console.WriteLine(item.Adresse);
 	                            }
 
+                                //Create a new sommerhus
+                                SommerhusClass Sommer1 = new SommerhusClass(2000, "Fasanvej 20", 4, 100, "Hustle", 4000,"Hans","Godkendt",3);
+                                Sommer1.InsertDB();
+
+                                
+
                             }else if (currentMenu.Equals("Reservation"))
                             {
                                 Console.Clear();
@@ -576,6 +581,17 @@ namespace SydvestBo_Opgave
 	                            {
                                     Console.WriteLine(item.MySommerhusID);
 	                            }
+
+
+                                //Create New Reservation
+
+                                DateTime tempdate = new DateTime(2019,07,21);
+                                //tempdate = "21-07-2019";
+
+
+
+                                Reservation Res1 = new Reservation(2, 1, "21-07-2019","Super",30304040,"Lauge");
+                                Res1.InsertDB();
 
                             }else if (currentMenu.Equals("Konsulent"))
                             {
@@ -631,5 +647,6 @@ namespace SydvestBo_Opgave
                 return $"{uge}-{uge + (ugeantal - 1)}";
             }
         }
+
     }
 }
