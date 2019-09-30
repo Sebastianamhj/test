@@ -111,5 +111,6 @@ namespace SydvestBo_Opgave.Database
             conn.Close();
             return list;
         }
+
     }
 }

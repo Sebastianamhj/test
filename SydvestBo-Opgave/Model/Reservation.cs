@@ -5,13 +5,13 @@ using System.Text;
 using System.Data;
 using System.Threading.Tasks;
 using SydvestBo_Opgave.Database;
+using System.Globalization;
 
 namespace SydvestBo_Opgave.Model
 {
 
     public class Reservation
     {
-
 
         public int Dage { get; set; }
         public DateTime StartDato { get; set; }
@@ -84,5 +84,35 @@ namespace SydvestBo_Opgave.Model
 
         }
 
+    }
+
+    public class Område
+    {
+        public int postNr { get; set; }
+        public string områdeBy { get; set; }
+
+        public Område ()
+	    {
+
+	    }
+
+        public static List<Område> createOmrådeList()
+        {
+
+            DataTable områdeTable = SQL.ReadTable("SELECT * FROM PostNrby");
+
+            List<Område> områdeList = new List<Område>();
+            foreach (DataRow row in områdeTable.Rows)
+	        {
+                områdeList.Add(new Område()
+                {
+                   postNr = Convert.ToInt32(row["postNr"]),
+                   områdeBy = Convert.ToString(row["ByNavn"])
+
+                });
+	        }
+
+            return områdeList;
+        }
     }
 }
