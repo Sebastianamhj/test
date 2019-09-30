@@ -42,7 +42,7 @@ namespace SydvestBo_Opgave.Model
     }
 
     public int PostNr
-    {
+        {
         get { return postnummer; }
         set {
                 if (value.ToString().Length == 4)
@@ -55,19 +55,19 @@ namespace SydvestBo_Opgave.Model
     }
 
         public SommerhusEjer ()
-	{
+	        {
 
-	}
+	        }
 
-        public SommerhusEjer (int ejerid, string fornavn, string efternavn, string adresse, int postnr, int telefon)
-	{
-            EjerID = ejerid;
-            Fornavn = fornavn;
-            Efternavn = efternavn;
-            Adresse = adresse;
-            PostNr = postnr;
-            Telefon = telefon;
-	}
+        public SommerhusEjer (string fornavn, string efternavn, string adresse, int postnr, int telefon)
+	        {
+            
+                Fornavn = fornavn;
+                Efternavn = efternavn;
+                Adresse = adresse;
+                PostNr = postnr;
+                Telefon = telefon;
+	        }
         
         public void InsertDB()
             {

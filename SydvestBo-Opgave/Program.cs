@@ -102,6 +102,7 @@ namespace SydvestBo_Opgave
             int stringCounter = menu.Count;
             int counter = 0;
             bool continueAccepted = false;
+            bool opretSkriv = true;
 
 
             if (menuCounter <= stringCounter)
@@ -150,12 +151,12 @@ namespace SydvestBo_Opgave
                                 {
                                     Console.BackgroundColor = ConsoleColor.DarkRed;
                                     Console.ForegroundColor = ConsoleColor.Black;
-                                    Console.Write($"{item.KundeNavn} {item.MyKundeTlf}");
+                                    Console.Write($"Uge: {ugeNumre(item.StartDato, item.Dage)} {item.SommerhusAddresse} {item.KundeNavn}");
                                     Console.ResetColor();
                                 }
                                 else
                                 {
-                                    Console.Write($"{item.KundeNavn} {item.MyKundeTlf}");
+                                    Console.Write($"Uge: {ugeNumre(item.StartDato, item.Dage)} {item.SommerhusAddresse} {item.KundeNavn}");
                                 }
                                 lineCounter++;
 	                        }
@@ -188,7 +189,7 @@ namespace SydvestBo_Opgave
 
                             foreach (var item in sommerhusList)
 	                        {
-
+                                
                                 counter++;
                                 Console.SetCursorPosition(1, lineCounter);
                                 if (counter.Equals(menuCounter))
