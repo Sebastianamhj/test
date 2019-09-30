@@ -41,6 +41,7 @@ namespace SydvestBo_Opgave
 
                 }
             }
+            Console.ResetColor();
         }
     }
 }
