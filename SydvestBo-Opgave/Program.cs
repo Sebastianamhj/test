@@ -630,12 +630,15 @@ namespace SydvestBo_Opgave
                                 //Create New Reservation
 
                                 DateTime tempdate = new DateTime(2019,07,21);
-                                //tempdate = "21-07-2019";
-
-
+                            
 
                                 Reservation Res1 = new Reservation(2, 1, tempdate,"Super",30304040,"Lauge");
                                 Res1.InsertDB();
+
+                                Res1.KundeNavn = "YAYYSAYYAY";
+                                Res1.EditDB(2);
+
+
 
                             }else if (currentMenu.Equals("Konsulent"))
                             {
@@ -659,8 +662,9 @@ namespace SydvestBo_Opgave
                             Konsulent kon1 = new Konsulent("Simon", "Juul", "Lyngvej 73", 50603010, 5000, 2400);
                             kon1.InsertDB();
                             
-                            //kon1.MyOmråde = 4000;
-                   
+                            kon1.Fornavn = "HANSI";
+                            kon1.Efternavn = "HINTERSEEER";
+                            kon1.EditDB(2);
                             
 
                             break;
