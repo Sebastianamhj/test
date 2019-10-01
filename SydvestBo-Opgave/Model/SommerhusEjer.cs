@@ -42,7 +42,7 @@ namespace SydvestBo_Opgave.Model
     }
 
     public int PostNr
-    {
+        {
         get { return postnummer; }
         set {
                 if (value.ToString().Length == 4)
@@ -55,23 +55,23 @@ namespace SydvestBo_Opgave.Model
     }
 
         public SommerhusEjer ()
-	{
+	        {
 
-	}
+	        }
 
-        public SommerhusEjer (int ejerid, string fornavn, string efternavn, string adresse, int postnr, int telefon)
-	{
-            EjerID = ejerid;
-            Fornavn = fornavn;
-            Efternavn = efternavn;
-            Adresse = adresse;
-            PostNr = postnr;
-            Telefon = telefon;
-	}
+        public SommerhusEjer (string fornavn, string efternavn, string adresse, int postnr, int telefon)
+	        {
+            
+                Fornavn = fornavn;
+                Efternavn = efternavn;
+                Adresse = adresse;
+                PostNr = postnr;
+                Telefon = telefon;
+	        }
         
         public void InsertDB()
             {
-            string sql = "INSERT INTO Ejer VALUES ('" + Fornavn + "','" + Efternavn + "','" + Adresse + "','" + PostNr + "','" + Telefon + ")"; 
+            string sql = "INSERT INTO Ejer VALUES ('" + Fornavn + "','" + Efternavn + "','" + Adresse + "'," + PostNr + "," + Telefon + ")"; 
 
             try 
 	        {	        
@@ -90,7 +90,7 @@ namespace SydvestBo_Opgave.Model
 
      public static List<SommerhusEjer> LavEjerListe()
         {
-         string sql = "SELECT * FROM EJER";
+         string sql = "SELECT * FROM Éjer";
             
             DataTable EjerDataTable = SQL.ReadTable(sql);
 
@@ -103,7 +103,7 @@ namespace SydvestBo_Opgave.Model
                     EjerID = Convert.ToInt32(EjerData["EjerID"]),
                     Fornavn = EjerData["Fornavn"].ToString(),
                     Efternavn = EjerData["Efternavn"].ToString(),
-                    Adresse = EjerData["Adresse"].ToString(),
+                    Adresse = EjerData["AdresseEjer"].ToString(),
                     PostNr = Convert.ToInt32(EjerData["PostNr"]),
                     Telefon = Convert.ToInt32(EjerData["Telefon"]),
 
