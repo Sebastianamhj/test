@@ -152,11 +152,11 @@ namespace SydvestBo_Opgave
                                     Console.BackgroundColor = ConsoleColor.DarkRed;
                                     Console.ForegroundColor = ConsoleColor.Black;
                                     Console.Write($"Uge: {ugeNumre(item.StartDato, item.Dage)} {item.SommerhusAddresse} {item.KundeNavn}");
-                                    Console.ResetColor();
+                                    Console.ResetColor(); 
                                 }
                                 else
                                 {
-                                    Console.Write($"Uge: {ugeNumre(item.StartDato, item.Dage)} {item.SommerhusAddresse} {item.KundeNavn}");
+                                   Console.Write($"Uge: {ugeNumre(item.StartDato, item.Dage)} {item.SommerhusAddresse} {item.KundeNavn}");
                                 }
                                 lineCounter++;
 	                        }
@@ -465,9 +465,10 @@ namespace SydvestBo_Opgave
                         case ConsoleKey.Enter:
                             if (menuCounter == 1)
                             {
-                            SommerhusEjere(currentMenu);
 
                                 currentMenu = "SommerhusEjer";
+                                SommerhusEjere(currentMenu);
+
 
                             }
                             else if (menuCounter == 2)
@@ -554,6 +555,23 @@ namespace SydvestBo_Opgave
                                 SommerhusEjer Ejer1 = new SommerhusEjer("Gunner","Hansen","Vestergårdsvej 28", 5000, 40544051);
                                 Ejer1.InsertDB();
 
+                                SommerhusEjer Ret1 = new SommerhusEjer();
+
+                                Ret1.Fornavn = "Harry";
+                                Ret1.Efternavn = "Potter";
+                                Ret1.Adresse = "Magiskvej 17";
+                                Ret1.PostNr = 5000;
+                                Ret1.PostNr = 22222222;
+
+                                Ret1.EditDB(2);
+                                
+                                Console.WriteLine("tryk på en tast SQL EDIT");
+                                Console.ReadKey();
+
+                                SommerhusEjer Ret2 = new SommerhusEjer("Hagrid","Magisk","Venafdyrvej 8", 2400, 10101010);
+
+                                Ret2.EditDB(2);
+
                             }else if (currentMenu.Equals("Sommerhus"))
                             {
                                 Console.Clear();
@@ -568,6 +586,10 @@ namespace SydvestBo_Opgave
                                 //Create a new sommerhus
                                 SommerhusClass Sommer1 = new SommerhusClass(2000, "Fasanvej 20", 4, 100, "Hustle", 4000,"Hans","Godkendt",3);
                                 Sommer1.InsertDB();
+
+                                Sommer1.Opsynsmand = "LALALALLALA";
+                                Sommer1.Godkendt = "MUTHER!";
+                                Sommer1.EditDB(2);
 
                                 
 
@@ -590,7 +612,7 @@ namespace SydvestBo_Opgave
 
 
 
-                                Reservation Res1 = new Reservation(2, 1, "21-07-2019","Super",30304040,"Lauge");
+                                Reservation Res1 = new Reservation(2, 1, tempdate,"Super",30304040,"Lauge");
                                 Res1.InsertDB();
 
                             }else if (currentMenu.Equals("Konsulent"))
@@ -604,7 +626,16 @@ namespace SydvestBo_Opgave
                                     Console.WriteLine(item.Fornavn + " " + item.Efternavn);
 	                            }
                             }
+
+                            //CREATE KONSULENT
+
+                            Konsulent kon1 = new Konsulent("Simon", "Juul", "Lyngvej 73", 50603010, 5000, 2400);
+                            kon1.InsertDB();
                             
+                            //kon1.MyOmråde = 4000;
+                   
+                            
+
                             break;
                     }
 

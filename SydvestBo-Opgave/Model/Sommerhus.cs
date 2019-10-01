@@ -103,6 +103,28 @@ namespace SydvestBo_Opgave.Model
             
     	}
 
+        public void EditDB(int ID)
+        {
+        string sql = "UPDATE SommerHuse SET PostNr = "  + PostNr + ", Adresse = '" + Adresse + "', Senge = " +  Senge + ", Stoerrelse = " + Stoerrelse + ", Klassificering = '" + Klassificering + "', StandardUgePris = " + StandardUgePris + ", Opsynsmand = '" + Opsynsmand + "', Godkendt = '" + Godkendt + "', EjerID = " + EjerID + " WHERE SommerHusID = " + ID;    
+
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, Sommerhus er ikke rettet. Fejlkode" + e);
+
+            }
+            
+
+        }       
+
+
+
           public void InsertDB()
             {
             string sql = "INSERT INTO SommerHuse VALUES (" + PostNr + ",'" + Adresse + "'," + Senge + "," + Stoerrelse + ",'" + Klassificering + "'," + StandardUgePris + ",'" + Opsynsmand + "','"+Godkendt+"',"+EjerID+")"; 

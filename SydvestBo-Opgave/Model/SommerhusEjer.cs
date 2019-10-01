@@ -61,13 +61,32 @@ namespace SydvestBo_Opgave.Model
 
         public SommerhusEjer (string fornavn, string efternavn, string adresse, int postnr, int telefon)
 	        {
-            
                 Fornavn = fornavn;
                 Efternavn = efternavn;
                 Adresse = adresse;
                 PostNr = postnr;
                 Telefon = telefon;
 	        }
+
+        public void EditDB(int ID)
+        {
+        string sql = "UPDATE Ejer SET Fornavn = " + "'" + Fornavn + "', Efternavn = '" + Efternavn + "', AdresseEjer = '" +  Adresse + "', PostNr = " + PostNr + ", Telefon = " + Telefon + "WHERE EjerID = " + ID;    
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, Ejer er ikke rettet. Fejlkode" + e);
+
+            }
+            
+
+        }       
+
         
         public void InsertDB()
             {
@@ -85,12 +104,13 @@ namespace SydvestBo_Opgave.Model
 
             }
             }
+
                     
     
 
      public static List<SommerhusEjer> LavEjerListe()
         {
-         string sql = "SELECT * FROM Éjer";
+         string sql = "SELECT * FROM Ejer";
             
             DataTable EjerDataTable = SQL.ReadTable(sql);
 

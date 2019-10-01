@@ -15,14 +15,14 @@ namespace SydvestBo_Opgave.Model
         public string Efternavn { get; set; }
         public string Addresse { get; set; }
         
-        private int KundeTlf;
+        private int KonsulentTlf;
 
-	public int MyKundeTlf
+	public int MykonsulentTlf
 	{
-		get { return KundeTlf;}
+		get { return KonsulentTlf;}
 		set { if (value.ToString().Length == 8)
         {
-            KundeTlf = value;}
+            KonsulentTlf = value;}
         }
 	}
 
@@ -59,16 +59,43 @@ namespace SydvestBo_Opgave.Model
 
 	    }
 
-        public Konsulent(int konsulentID, string fornavn, string efternavn, string addresse, int kundeTlf, int postNr, int område )
+        public Konsulent(string fornavn, string efternavn, string addresse, int konsulentTLF, int postNr, int område )
         {
-            MyKonsulentID = konsulentID;
             Fornavn = fornavn;
             Efternavn = efternavn;
             Addresse = addresse;
-            MyKundeTlf = kundeTlf;
+            MykonsulentTlf = konsulentTLF;
             MyPostNr = postNr;
             MyOmråde = område;
         }
+
+        public void EditDB(int ID)
+        {
+
+
+        
+        
+        }
+
+
+        public void InsertDB()
+            {
+            string sql = "INSERT INTO Konsulenter VALUES ('" + Fornavn + "','" + Efternavn + "','" + Addresse + "'," + MykonsulentTlf + "," + MyPostNr + "," + MyOmråde + ")"; 
+
+            try 
+	        {	        
+		    SQL.insert(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, Konsulent er ikke oprettet. Fejlkode" + e);
+
+            }
+            }
+
+
 
         public static List<Konsulent> CreateKonsulentList()
         {
@@ -85,7 +112,7 @@ namespace SydvestBo_Opgave.Model
                     Fornavn = Convert.ToString(row["Fornavn"]),
                     Efternavn = Convert.ToString(row["Efternavn"]),
                     Addresse = Convert.ToString(row["Adresse"]),
-                    MyKundeTlf = Convert.ToInt32(row["Telefon"]),
+                    MykonsulentTlf = Convert.ToInt32(row["Telefon"]),
                     MyPostNr = Convert.ToInt32(row["PostNr"]),
                     MyOmråde = Convert.ToInt32(row["Område"])
                 });

@@ -14,10 +14,11 @@ namespace SydvestBo_Opgave.Model
     {
 
         public int Dage { get; set; }
-        public string StartDato { get; set; }
+        public DateTime StartDato { get; set; }
         public string Sæson { get; set; }
         public string KundeNavn { get; set; }
         public string SommerhusAddresse { get; set; }
+        public int Salgspris { get; set; }
 
         private int ReservationID;
         private int SommerhusID;
@@ -50,7 +51,7 @@ namespace SydvestBo_Opgave.Model
         }
 
         
-        public Reservation(int sommerhusID, int dage, string startDato, string sæson, int kundetlf, string kundeNavn)
+        public Reservation(int sommerhusID, int dage, DateTime startDato, string sæson, int kundetlf, string kundeNavn)
         {
             
             MySommerhusID = sommerhusID;
@@ -65,11 +66,42 @@ namespace SydvestBo_Opgave.Model
         {
 
         }
+
+         public void EditDB(int ID)
+        {
+        string sql = "UPDATE Reservationer SET SommerhusID = "  + MySommerhusID + ", Dage = '" + Dage + "', Senge = " +  Senge + ", Stoerrelse = " + Stoerrelse + ", Klassificering = '" + Klassificering + "', StandardUgePris = " + StandardUgePris + ", Opsynsmand = '" + Opsynsmand + "', Godkendt = '" + Godkendt + "', EjerID = " + EjerID + " WHERE SommerHusID = " + ID;    
+
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, Ejer er ikke rettet. Fejlkode" + e);
+
+            }
+            
+
+        }  
         
         public void InsertDB()
         {
+            string tempstr;
+            string tempstr1;
+            string tempstr2;
+            string tempstr3;
+
+            tempstr = StartDato.ToString("MM/dd/yyyy");
+            tempstr1 = tempstr.Substring(0,2);
+            tempstr2 = tempstr.Substring(3,2);
+            tempstr3 = tempstr.Substring(6,4);
+            tempstr = tempstr2 + "-" + tempstr1 + "-" + tempstr3;
+
           
-            string sql = "INSERT INTO Reservationer VALUES (" + MySommerhusID + "," + Dage + ",'" + StartDato + "','" + Sæson + "'," + MyKundeTlf + ",'" + KundeNavn + "')"; 
+            string sql = "INSERT INTO Reservationer VALUES (" + MySommerhusID + "," + Dage + ",'" + tempstr + "','" + Sæson + "'," + MyKundeTlf + ",'" + KundeNavn + "'," + Salgspris + ")"; 
 
             try 
 	        {	        
@@ -97,11 +129,12 @@ namespace SydvestBo_Opgave.Model
                     MyReservationID = Convert.ToInt32(row["ReservationID"]),
                     MySommerhusID = Convert.ToInt32(row["SommerhusID"]),
                     Dage = Convert.ToInt32(row["Dage"]),
-                    StartDato = Convert.ToString(row["StartDato"]),
+                    StartDato = Convert.ToDateTime(row["StartDato"]),
                     Sæson = Convert.ToString(row["Sæson"]),
                     MyKundeTlf = Convert.ToInt32(row["KundeTelefon"]),
                     KundeNavn = Convert.ToString(row["Kundenavn"]),
-                    SommerhusAddresse = Convert.ToString(row["Adresse"])
+                    SommerhusAddresse = Convert.ToString(row["Adresse"]),
+                    Salgspris = Convert.ToInt32(row["Salgspris"])
                 });
 	        }
 

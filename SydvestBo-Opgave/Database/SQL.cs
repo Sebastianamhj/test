@@ -37,6 +37,16 @@ namespace SydvestBo_Opgave.Database
             }
         }
 
+        public static void Edit(string sql)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
         public static void insert(string sql)
         {
