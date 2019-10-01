@@ -14,7 +14,7 @@ namespace SydvestBo_Opgave.Model
     {
 
         public int Dage { get; set; }
-        public string StartDato { get; set; }
+        public DateTime StartDato { get; set; }
         public string Sæson { get; set; }
         public string KundeNavn { get; set; }
         public string SommerhusAddresse { get; set; }
@@ -50,7 +50,7 @@ namespace SydvestBo_Opgave.Model
         }
 
         
-        public Reservation(int sommerhusID, int dage, string startDato, string sæson, int kundetlf, string kundeNavn)
+        public Reservation(int sommerhusID, int dage, DateTime startDato, string sæson, int kundetlf, string kundeNavn)
         {
             
             MySommerhusID = sommerhusID;
@@ -97,7 +97,7 @@ namespace SydvestBo_Opgave.Model
                     MyReservationID = Convert.ToInt32(row["ReservationID"]),
                     MySommerhusID = Convert.ToInt32(row["SommerhusID"]),
                     Dage = Convert.ToInt32(row["Dage"]),
-                    StartDato = Convert.ToString(row["StartDato"]),
+                    StartDato = Convert.ToDateTime(row["StartDato"]),
                     Sæson = Convert.ToString(row["Sæson"]),
                     MyKundeTlf = Convert.ToInt32(row["KundeTelefon"]),
                     KundeNavn = Convert.ToString(row["Kundenavn"]),

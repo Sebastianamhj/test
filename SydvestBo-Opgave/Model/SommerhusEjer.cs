@@ -70,27 +70,25 @@ namespace SydvestBo_Opgave.Model
 	        }
         
         public void InsertDB()
-            {
+        {
             string sql = "INSERT INTO Ejer VALUES ('" + Fornavn + "','" + Efternavn + "','" + Adresse + "'," + PostNr + "," + Telefon + ")"; 
 
-            try 
-	        {	        
-		    SQL.insert(sql);
-            
+            try {	        
 
+		    SQL.insert(sql);
 	        }
-        	catch (Exception e)
-	        {
+        	catch (Exception e) {
+
                Console.WriteLine("Der skete en fejl, Ejer er ikke oprettet. Fejlkode" + e);
 
             }
-            }
+        }
                     
     
 
      public static List<SommerhusEjer> LavEjerListe()
-        {
-         string sql = "SELECT * FROM Éjer";
+     {
+         string sql = "SELECT * FROM Ejer";
             
             DataTable EjerDataTable = SQL.ReadTable(sql);
 
@@ -113,7 +111,7 @@ namespace SydvestBo_Opgave.Model
             
             return EjerList;    
 
-         }
+     }
 
 	
 
