@@ -67,6 +67,26 @@ namespace SydvestBo_Opgave.Model
 
         }
 
+        public void DeleteDB(int ID)
+        {
+        string sql ="DELETE FROM Reservationer WHERE ReservationID =" + ID;
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, reservationen er ikke slettet. Fejlkode" + e);
+
+            }
+
+        }
+
+
+
          public void EditDB(int ID)
         {
             string tempstr;

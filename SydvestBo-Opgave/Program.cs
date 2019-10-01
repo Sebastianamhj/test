@@ -588,6 +588,8 @@ namespace SydvestBo_Opgave
                                 Ret1.PostNr = 22222222;
 
                                 Ret1.EditDB(2);
+                                Ret1.DeleteDB(5);
+
                                 
                                 Console.WriteLine("tryk på en tast SQL EDIT");
                                 Console.ReadKey();
@@ -595,6 +597,7 @@ namespace SydvestBo_Opgave
                                 SommerhusEjer Ret2 = new SommerhusEjer("Hagrid","Magisk","Venafdyrvej 8", 2400, 10101010);
 
                                 Ret2.EditDB(2);
+
 
                             }else if (currentMenu.Equals("Sommerhus"))
                             {
@@ -613,6 +616,8 @@ namespace SydvestBo_Opgave
                                 Sommer1.Opsynsmand = "LALALALLALA";
                                 Sommer1.Godkendt = "MUTHER!";
                                 Sommer1.EditDB(2);
+
+                                Sommer1.DeleteDB(5);
 
                                 
 
@@ -637,6 +642,8 @@ namespace SydvestBo_Opgave
 
                                 Res1.KundeNavn = "YAYYSAYYAY";
                                 Res1.EditDB(2);
+
+                                Res1.DeleteDB(5);
 
 
 
@@ -666,6 +673,8 @@ namespace SydvestBo_Opgave
                             kon1.Efternavn = "HINTERSEEER";
                             kon1.EditDB(2);
                             
+
+                            kon1.DeleteDB(1);
 
                             break;
                     }
