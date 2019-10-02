@@ -608,43 +608,85 @@ namespace SydvestBo_Opgave
                             break;
                             
                          case ConsoleKey.Enter:
-
-                            int quickMaths = 7;
-                            int stringCounter = menu.Count;
-                            int currentLineCursor = Console.CursorTop;
-                            do
-                            {
-                                Console.SetCursorPosition(0, menuCounter);
-                                Console.Write(new string(' ', Console.WindowWidth));
-                                quickMaths++;
-                            } while (quickMaths <=stringCounter);
-            
-                            Console.SetCursorPosition(0, currentLineCursor);
-
-
-                            if (menuCounter)
+                            
+                            int clearCounter = 0;
+                            int lineCount = 6;
+                            
+                            
+                             List<int> charCounter = new List<int>() { 0, 10, 12, 10, 9, 6 };
+                            //charCounter[menuCounter];
+                            
+                            while (clearCounter < menu[menuCounter-1].ToString().Count())
 	                        {
+                            Console.SetCursorPosition(clearCounter + charCounter[menuCounter], lineCount+menuCounter);
 
-
-	                        }
-
-
-
-                            Console.SetCursorPosition(0, menuCounter);
                             Console.Write(new string(' ', Console.WindowWidth));
-
-
-                                    while (true)
-	                        {
-                            Console.SetCursorPosition(1, menuCounter);
-                            Console.BackgroundColor = ConsoleColor.White;
-                            Console.ForegroundColor = ConsoleColor.Black;
-
-
+                            clearCounter++;
+                       
 	                        }
-                        
-                        
+                            clearCounter = 0;
+                            Console.SetCursorPosition(clearCounter + charCounter[menuCounter], lineCount+menuCounter);
 
+                            List<string> e1 = new List<string>();
+                            e1 = menu.Cast<string>().ToList();
+
+                            
+                            
+                            int ejerID = Convert.ToInt32(e1[5]);
+                            string fornavn = e1[0];
+                            string efternavn = e1[1];
+                            string adresse = e1[2];
+                            int postNummer = Convert.ToInt32(e1[3]);
+                            int telefon = Convert.ToInt32(e1[4]);
+                            
+
+                            string input = Console.ReadLine();
+
+
+                            switch (menuCounter)
+	                        {
+                                case 1: //Fornavn
+                                    fornavn = input;
+                                   
+                                    break;
+                                
+                                case 2: //Efternavn
+                                    efternavn = input;
+                                    break;
+	
+                                case 3: //Adresse
+                                    adresse = input;
+                                    break;
+
+                                case 4: //PostNr
+                                    postNummer = Convert.ToInt32(input);
+                                    break;
+
+                                case 5: //PostNr
+                                    telefon = Convert.ToInt32(input);
+                                    break;
+                               
+		                        default:
+                                    break;
+	                        }
+                            
+                            
+                            SommerhusEjer e2 = new SommerhusEjer(fornavn, efternavn, adresse, postNummer, telefon);
+                            e2.EditDB(ejerID);
+                            
+                            e1[0] = fornavn;
+                            e1[1] = efternavn;
+                            e1[2] = adresse;
+                            e1[3] = postNummer.ToString();
+                            e1[4] = telefon.ToString();
+                            e1[5] = ejerID.ToString();
+                            
+
+                            DynamicChoosing(firstWrite, e1,menuCounter,currentMenu);
+                            MenuOptions(e1, currentMenu);
+                            
+
+                            //kald dynamicchoosing til sidst
 
                             break;
 
@@ -763,9 +805,9 @@ namespace SydvestBo_Opgave
                                         newSommerhus.Add(item.FornavnEjer);
                                         newSommerhus.Add(item.EfternavnEjer);
                                         newSommerhus.Add(item.Klassificering);
-                                        newSommerhus.Add(item.Stoerrelse);
-                                        newSommerhus.Add(item.Senge);
-                                        newSommerhus.Add(item.StandardUgePris);
+                                        newSommerhus.Add(item.Stoerrelse.ToString());
+                                        newSommerhus.Add(item.Senge.ToString());
+                                        newSommerhus.Add(item.StandardUgePris.ToString());
                                         newSommerhus.Add(item.Opsynsmand);
                                         newSommerhus.Add(item.Godkendt);
                                     }
