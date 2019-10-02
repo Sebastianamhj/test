@@ -67,7 +67,27 @@ namespace SydvestBo_Opgave.Model
 
         }
 
-        /*public void EditDB(int ID)
+        public void DeleteDB(int ID)
+        {
+        string sql ="DELETE FROM Reservationer WHERE ReservationID =" + ID;
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, reservationen er ikke slettet. Fejlkode" + e);
+
+            }
+
+        }
+
+
+
+         public void EditDB(int ID)
         {
             string tempstr;
             string tempstr1;
@@ -83,18 +103,21 @@ namespace SydvestBo_Opgave.Model
 
         string sql = "UPDATE Reservationer SET SommerhusID = "  + MySommerhusID + ", Dage = '" + Dage + "', StartDato = '" +  tempstr + "', Sæson = '" + Sæson + "', KundeTelefon = " + MyKundeTlf + ", Kundenavn = '" + KundeNavn + "', Salgspris = " + Salgspris + " WHERE ReservationID = " + ID;    
 
+
             try 
 	        {	        
 		    SQL.Edit(sql);
             
+
 	        }
         	catch (Exception e)
 	        {
                Console.WriteLine("Der skete en fejl, Reservation er ikke rettet. Fejlkode" + e);
 
             }
+            
 
-        }  */
+        }  
         
         public void InsertDB()
         {
@@ -116,6 +139,7 @@ namespace SydvestBo_Opgave.Model
 	        {	        
 		    SQL.insert(sql);
             
+
 	        }
         	catch (Exception e)
 	        {
