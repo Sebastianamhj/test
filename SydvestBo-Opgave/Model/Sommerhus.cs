@@ -103,7 +103,7 @@ namespace SydvestBo_Opgave.Model
             
     	}
 
-        public void DeleteDB(int ID)
+        public static void DeleteDB(int ID)
         {
         string sql ="DELETE FROM SommerHuse WHERE SommerHusID =" +  ID;
 

@@ -69,9 +69,9 @@ namespace SydvestBo_Opgave.Model
 	        }
 
 
-        public void DeleteDB(int ID)
+        public static void DeleteDB(int ID)
         {
-        string sql ="DELETE FROM Ejer WHERE EjerID =" + ID;
+        string sql =$"DELETE FROM Ejer WHERE EjerID = {ID}";
 
             try 
 	        {	        
