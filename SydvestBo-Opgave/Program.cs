@@ -875,6 +875,90 @@ namespace SydvestBo_Opgave
                             }
                             
                             break;
+                            
+                         case ConsoleKey.Enter:
+                            
+                            int clearCounter = 0;
+                            int lineCount = 6;
+                            
+                            
+                             List<int> charCounter = new List<int>() { 0, 10, 12, 10, 9, 6 };
+                            //charCounter[menuCounter];
+                            
+                            while (clearCounter < menu[menuCounter-1].ToString().Count())
+	                        {
+                            Console.SetCursorPosition(clearCounter + charCounter[menuCounter], lineCount+menuCounter);
+
+                            Console.Write(new string(' ', Console.WindowWidth));
+                            clearCounter++;
+                       
+	                        }
+                            clearCounter = 0;
+                            Console.SetCursorPosition(clearCounter + charCounter[menuCounter], lineCount+menuCounter);
+
+                            List<string> e1 = new List<string>();
+                            e1 = menu.Cast<string>().ToList();
+
+                            
+                            
+                            int ejerID = Convert.ToInt32(e1[5]);
+                            string fornavn = e1[0];
+                            string efternavn = e1[1];
+                            string adresse = e1[2];
+                            int postNummer = Convert.ToInt32(e1[3]);
+                            int telefon = Convert.ToInt32(e1[4]);
+                            
+
+                            string input = Console.ReadLine();
+
+
+                            switch (menuCounter)
+	                        {
+                                case 1: //Fornavn
+                                    fornavn = input;
+                                   
+                                    break;
+                                
+                                case 2: //Efternavn
+                                    efternavn = input;
+                                    break;
+	
+                                case 3: //Adresse
+                                    adresse = input;
+                                    break;
+
+                                case 4: //PostNr
+                                    postNummer = Convert.ToInt32(input);
+                                    break;
+
+                                case 5: //PostNr
+                                    telefon = Convert.ToInt32(input);
+                                    break;
+                               
+		                        default:
+                                    break;
+	                        }
+                            
+                            
+                            SommerhusEjer e2 = new SommerhusEjer(fornavn, efternavn, adresse, postNummer, telefon);
+                            e2.EditDB(ejerID);
+                            
+                            e1[0] = fornavn;
+                            e1[1] = efternavn;
+                            e1[2] = adresse;
+                            e1[3] = postNummer.ToString();
+                            e1[4] = telefon.ToString();
+                            e1[5] = ejerID.ToString();
+                            
+
+                            DynamicChoosing(firstWrite, e1,menuCounter,currentMenu);
+                            MenuOptions(e1, currentMenu);
+                            
+
+                            //kald dynamicchoosing til sidst
+
+                            break;
+
                     }
                 } while (!titleMenuBool);
             } else 
@@ -1215,6 +1299,20 @@ namespace SydvestBo_Opgave
             {
                 return $"{uge}-{uge + (ugeantal - 1)}";
             }
+        }
+
+        public static double prisUdregning(DateTime dato, int ugeantal, int SommerhusUgepris)
+        {
+
+            double price = 0;
+            int uge = (dato.DayOfYear / 7) + 1;
+
+            for (int i=0;i < ugeantal;i++)
+            {
+                price += PrisUdregner(Convert.ToString(uge), SommerhusUgepris);
+                uge++;
+            }
+            return price;
         }
 
         public static void typeRed()

@@ -68,6 +68,7 @@ namespace SydvestBo_Opgave.Model
                 Telefon = telefon;
 	        }
 
+
         public void DeleteDB(int ID)
         {
         string sql ="DELETE FROM Ejer WHERE EjerID =" + ID;
