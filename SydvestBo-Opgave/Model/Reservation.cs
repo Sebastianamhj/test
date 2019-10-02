@@ -20,6 +20,8 @@ namespace SydvestBo_Opgave.Model
         public string SommerhusAddresse { get; set; }
         public int Salgspris { get; set; }
 
+        public int UgePris { get; set; }
+
         private int ReservationID;
         private int SommerhusID;
         private int KundeTlf;
@@ -60,6 +62,7 @@ namespace SydvestBo_Opgave.Model
             Sæson = sæson;
             MyKundeTlf = kundetlf;
             KundeNavn = kundeNavn;
+          
         }
         
         public Reservation()
@@ -166,7 +169,8 @@ namespace SydvestBo_Opgave.Model
                     MyKundeTlf = Convert.ToInt32(row["KundeTelefon"]),
                     KundeNavn = Convert.ToString(row["Kundenavn"]),
                     SommerhusAddresse = Convert.ToString(row["Adresse"]),
-                    Salgspris = Convert.ToInt32(row["Salgspris"])
+                    Salgspris = Convert.ToInt32(row["Salgspris"]),
+                    UgePris = Convert.ToInt32(row["StandardUgePris"])
                 });
 	        }
 

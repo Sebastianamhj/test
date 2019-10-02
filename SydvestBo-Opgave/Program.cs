@@ -911,6 +911,20 @@ namespace SydvestBo_Opgave
             }
         }
 
+        public static double prisUdregning(DateTime dato, int ugeantal, int SommerhusUgepris)
+        {
+
+            double price = 0;
+            int uge = (dato.DayOfYear / 7) + 1;
+
+            for (int i=0;i < ugeantal;i++)
+            {
+                price += PrisUdregner(Convert.ToString(uge), SommerhusUgepris);
+                uge++;
+            }
+            return price;
+        }
+
         public static void typeRed()
         {
             Console.BackgroundColor = ConsoleColor.DarkRed;
