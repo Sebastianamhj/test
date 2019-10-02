@@ -689,6 +689,8 @@ namespace SydvestBo_Opgave
                                 Ret1.PostNr = 22222222;
 
                                 Ret1.EditDB(2);
+                                Ret1.DeleteDB(5);
+
                                 
                                 Console.WriteLine("tryk på en tast SQL EDIT");
                                 Console.ReadKey();
@@ -696,6 +698,7 @@ namespace SydvestBo_Opgave
                                 SommerhusEjer Ret2 = new SommerhusEjer("Hagrid","Magisk","Venafdyrvej 8", 2400, 10101010);
 
                                 Ret2.EditDB(2);*/
+
 
                             }else if (currentMenu.Equals("Sommerhus"))
                             {
@@ -715,6 +718,8 @@ namespace SydvestBo_Opgave
                                 Sommer1.Godkendt = "MUTHER!";
                                 Sommer1.EditDB(2);
 
+                                Sommer1.DeleteDB(5);
+
                                 
 
                             }else if (currentMenu.Equals("Reservation"))
@@ -726,17 +731,25 @@ namespace SydvestBo_Opgave
 	                            {
                                     Console.WriteLine(item.MySommerhusID);
 	                            }
+                                string abbb = " " + PrisUdregner("5" , 3000);
 
+                                Console.WriteLine(abbb);
+                                Console.ReadLine();
 
                                 //Create New Reservation
 
                                 DateTime tempdate = new DateTime(2019,07,21);
-                                //tempdate = "21-07-2019";
-
-
+                            
 
                                 Reservation Res1 = new Reservation(2, 1, tempdate,"Super",30304040,"Lauge");
                                 Res1.InsertDB();
+
+                                Res1.KundeNavn = "YAYYSAYYAY";
+                                Res1.EditDB(2);
+
+                                Res1.DeleteDB(5);
+
+
 
                             }else if (currentMenu.Equals("Konsulent"))
                             {
@@ -810,5 +823,40 @@ namespace SydvestBo_Opgave
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.ForegroundColor = ConsoleColor.Black;
         }
+
+        public static double PrisUdregner(string ugenummer, double SommerhusUgepris)
+        {
+            int uge = Convert.ToInt32(ugenummer);
+            double resultat = 0;
+
+            if (uge >= 2 && uge <= 11)
+	        {
+                //Lav sæson
+                resultat = SommerhusUgepris * 0.9;
+	        }
+            else if (uge >= 12 && uge <= 23 )
+	        {
+                //Mellem sæson
+                resultat = SommerhusUgepris * 1.0;
+	        }
+            else if (uge == 1 || uge >= 48 && uge <=51 || uge >= 23 && uge <=27)
+	        {
+                //Høj sæson
+                resultat = SommerhusUgepris * 1.6;
+	        }
+            else if (uge >= 28 && uge <=30 || uge == 52)
+	        {
+                //Super sæson
+                resultat = SommerhusUgepris * 2.0;
+	        }
+
+            return resultat;
+
+
+        }
+
+
+
+        
     }
 }

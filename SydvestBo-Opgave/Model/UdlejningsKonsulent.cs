@@ -69,13 +69,44 @@ namespace SydvestBo_Opgave.Model
             MyOmråde = område;
         }
 
-        public void EditDB(int ID)
+        public void DeleteDB(int ID)
         {
+        string sql ="DELETE FROM konsulenter WHERE konsulenterID =" +  ID;
 
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
 
-        
-        
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, konsulent er ikke slettet. Fejlkode" + e);
+
+            }
+
         }
+
+      public void EditDB(int ID)
+        {
+        
+        string sql = "UPDATE konsulenter SET Fornavn = '"  + Fornavn + "', Efternavn = '" + Efternavn + "', Adresse = '" +  Addresse + "', Telefon = " + MykonsulentTlf + ", PostNr = " + MyPostNr + ", Område = " + MyOmråde + " WHERE konsulenterID = " + ID;    
+
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, Konsulent er ikke rettet. Fejlkode" + e);
+
+            }
+            
+
+        }   
 
 
         public void InsertDB()

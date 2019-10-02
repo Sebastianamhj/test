@@ -68,6 +68,25 @@ namespace SydvestBo_Opgave.Model
                 Telefon = telefon;
 	        }
 
+        public void DeleteDB(int ID)
+        {
+        string sql ="DELETE FROM Ejer WHERE EjerID =" + ID;
+
+            try 
+	        {	        
+		    SQL.Edit(sql);
+            
+
+	        }
+        	catch (Exception e)
+	        {
+               Console.WriteLine("Der skete en fejl, Ejer er ikke slettet. Fejlkode" + e);
+
+            }
+
+        }
+
+
         public void EditDB(int ID)
         {
         string sql = "UPDATE Ejer SET Fornavn = " + "'" + Fornavn + "', Efternavn = '" + Efternavn + "', AdresseEjer = '" +  Adresse + "', PostNr = " + PostNr + ", Telefon = " + Telefon + "WHERE EjerID = " + ID;    

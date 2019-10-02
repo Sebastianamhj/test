@@ -69,7 +69,19 @@ namespace SydvestBo_Opgave.Model
 
         /*public void EditDB(int ID)
         {
-        string sql = "UPDATE Reservationer SET SommerhusID = "  + MySommerhusID + ", Dage = '" + Dage + "', Senge = " +  Senge + ", Stoerrelse = " + Stoerrelse + ", Klassificering = '" + Klassificering + "', StandardUgePris = " + StandardUgePris + ", Opsynsmand = '" + Opsynsmand + "', Godkendt = '" + Godkendt + "', EjerID = " + EjerID + " WHERE SommerHusID = " + ID;    
+            string tempstr;
+            string tempstr1;
+            string tempstr2;
+            string tempstr3;
+
+            tempstr = StartDato.ToString("MM/dd/yyyy");
+            tempstr1 = tempstr.Substring(0,2);
+            tempstr2 = tempstr.Substring(3,2);
+            tempstr3 = tempstr.Substring(6,4);
+            tempstr = tempstr2 + "-" + tempstr1 + "-" + tempstr3;
+
+
+        string sql = "UPDATE Reservationer SET SommerhusID = "  + MySommerhusID + ", Dage = '" + Dage + "', StartDato = '" +  tempstr + "', Sæson = '" + Sæson + "', KundeTelefon = " + MyKundeTlf + ", Kundenavn = '" + KundeNavn + "', Salgspris = " + Salgspris + " WHERE ReservationID = " + ID;    
 
             try 
 	        {	        
@@ -78,7 +90,7 @@ namespace SydvestBo_Opgave.Model
 	        }
         	catch (Exception e)
 	        {
-               Console.WriteLine("Der skete en fejl, Ejer er ikke rettet. Fejlkode" + e);
+               Console.WriteLine("Der skete en fejl, Reservation er ikke rettet. Fejlkode" + e);
 
             }
 
