@@ -586,8 +586,51 @@ namespace SydvestBo_Opgave
                             {
                                 currentMenu = "SommerhusEjer";
                                 CreateSommerhusEjerScreen(currentMenu);
+                                
                             }
                             break;
+                            
+                         case ConsoleKey.Enter:
+
+                            int quickMaths = 7;
+                            int stringCounter = menu.Count;
+                            int currentLineCursor = Console.CursorTop;
+                            do
+                            {
+                                Console.SetCursorPosition(0, menuCounter);
+                                Console.Write(new string(' ', Console.WindowWidth));
+                                quickMaths++;
+                            } while (quickMaths <=stringCounter);
+            
+                            Console.SetCursorPosition(0, currentLineCursor);
+
+
+                            if (menuCounter)
+	                        {
+
+
+	                        }
+
+
+
+                            Console.SetCursorPosition(0, menuCounter);
+                            Console.Write(new string(' ', Console.WindowWidth));
+
+
+                                    while (true)
+	                        {
+                            Console.SetCursorPosition(1, menuCounter);
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+
+
+	                        }
+                        
+                        
+
+
+                            break;
+
                     }
                 } while (!titleMenuBool);
             } else 
@@ -745,7 +788,7 @@ namespace SydvestBo_Opgave
                                 Res1.InsertDB();
 
                                 Res1.KundeNavn = "YAYYSAYYAY";
-                                Res1.EditDB(2);
+                                Res1.EditDB(2);  
 
                                 Res1.DeleteDB(5);
 
