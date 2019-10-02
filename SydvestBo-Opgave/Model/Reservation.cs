@@ -67,25 +67,22 @@ namespace SydvestBo_Opgave.Model
 
         }
 
-         public void EditDB(int ID)
+        /*public void EditDB(int ID)
         {
         string sql = "UPDATE Reservationer SET SommerhusID = "  + MySommerhusID + ", Dage = '" + Dage + "', Senge = " +  Senge + ", Stoerrelse = " + Stoerrelse + ", Klassificering = '" + Klassificering + "', StandardUgePris = " + StandardUgePris + ", Opsynsmand = '" + Opsynsmand + "', Godkendt = '" + Godkendt + "', EjerID = " + EjerID + " WHERE SommerHusID = " + ID;    
-
 
             try 
 	        {	        
 		    SQL.Edit(sql);
             
-
 	        }
         	catch (Exception e)
 	        {
                Console.WriteLine("Der skete en fejl, Ejer er ikke rettet. Fejlkode" + e);
 
             }
-            
 
-        }  
+        }  */
         
         public void InsertDB()
         {
@@ -107,7 +104,6 @@ namespace SydvestBo_Opgave.Model
 	        {	        
 		    SQL.insert(sql);
             
-
 	        }
         	catch (Exception e)
 	        {

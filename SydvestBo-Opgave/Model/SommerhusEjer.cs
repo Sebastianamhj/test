@@ -85,8 +85,7 @@ namespace SydvestBo_Opgave.Model
             }
             
 
-        }       
-
+        }   
         
         public void InsertDB()
         {
