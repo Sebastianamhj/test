@@ -1,0 +1,21 @@
+klassificering
+
+Budget
+Normal
+Hustle 
+Luksus
+
+Sæsoner
+lav uger: 0.9
+2,3,4,5,6,7,8,9,10,11
+
+Mellem uger: 1.0
+12,13,14,15,16,17,18,19,20,21,22,23
+
+Høj uger: 1.6
+48,49,50,51,1,27,26,25,24,23
+
+Super ugerne: 2.0
+28, 29, 30 og 52
+
+eks. en uge i 51 med en standard ugepris på 3000 koster 4800, da den ganges med 1,6
