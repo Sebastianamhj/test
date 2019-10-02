@@ -720,9 +720,9 @@ namespace SydvestBo_Opgave
                                         newSommerhus.Add(item.FornavnEjer);
                                         newSommerhus.Add(item.EfternavnEjer);
                                         newSommerhus.Add(item.Klassificering);
-                                        newSommerhus.Add(item.Stoerrelse);
-                                        newSommerhus.Add(item.Senge);
-                                        newSommerhus.Add(item.StandardUgePris);
+                                        newSommerhus.Add(item.Stoerrelse.ToString());
+                                        newSommerhus.Add(item.Senge.ToString());
+                                        newSommerhus.Add(item.StandardUgePris.ToString());
                                         newSommerhus.Add(item.Opsynsmand);
                                         newSommerhus.Add(item.Godkendt);
                                     }
@@ -824,6 +824,20 @@ namespace SydvestBo_Opgave
             {
                 return $"{uge}-{uge + (ugeantal - 1)}";
             }
+        }
+
+        public static double prisUdregning(DateTime dato, int ugeantal, int SommerhusUgepris)
+        {
+
+            double price = 0;
+            int uge = (dato.DayOfYear / 7) + 1;
+
+            for (int i=0;i < ugeantal;i++)
+            {
+                price += PrisUdregner(Convert.ToString(uge), SommerhusUgepris);
+                uge++;
+            }
+            return price;
         }
 
         public static void typeRed()

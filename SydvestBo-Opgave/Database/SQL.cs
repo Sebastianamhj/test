@@ -17,11 +17,7 @@ namespace SydvestBo_Opgave.Database
         // Lauges Connection string:
         // private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=localhost";
         // private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=DESKTOP-TASIIAJ\H1SUMMER";
-<<<<<<< HEAD
         private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=SKAB1-PC-09\H1SOMMER";
-=======
-        private static string ConnectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SydvestDB;Data Source=DESKTOP-TASIIAJ\H1SUMMER";
->>>>>>> d5f212acab4eb931dd8fb2a38a0f1c3b79851577
 
         public static bool SQLConnectionOK()
         {
