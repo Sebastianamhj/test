@@ -630,7 +630,10 @@ namespace SydvestBo_Opgave
 	                            {
                                     Console.WriteLine(item.MySommerhusID);
 	                            }
+                                string abbb = " " + PrisUdregner("5" , 3000);
 
+                                Console.WriteLine(abbb);
+                                Console.ReadLine();
 
                                 //Create New Reservation
 
@@ -718,5 +721,40 @@ namespace SydvestBo_Opgave
                 return $"{uge}-{uge + (ugeantal - 1)}";
             }
         }
+
+        public static double PrisUdregner(string ugenummer, double SommerhusUgepris)
+        {
+            int uge = Convert.ToInt32(ugenummer);
+            double resultat = 0;
+
+            if (uge >= 2 && uge <= 11)
+	        {
+                //Lav sæson
+                resultat = SommerhusUgepris * 0.9;
+	        }
+            else if (uge >= 12 && uge <= 23 )
+	        {
+                //Mellem sæson
+                resultat = SommerhusUgepris * 1.0;
+	        }
+            else if (uge == 1 || uge >= 48 && uge <=51 || uge >= 23 && uge <=27)
+	        {
+                //Høj sæson
+                resultat = SommerhusUgepris * 1.6;
+	        }
+            else if (uge >= 28 && uge <=30 || uge == 52)
+	        {
+                //Super sæson
+                resultat = SommerhusUgepris * 2.0;
+	        }
+
+            return resultat;
+
+
+        }
+
+
+
+        
     }
 }
