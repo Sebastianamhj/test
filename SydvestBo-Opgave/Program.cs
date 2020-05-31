@@ -25,6 +25,7 @@ namespace SydvestBo_Opgave
             string currentMenu = "Main";
 
             createMainScreen(currentMenu);
+	    Console.WriteLin('hello');
 
             Console.ReadLine();
         }
